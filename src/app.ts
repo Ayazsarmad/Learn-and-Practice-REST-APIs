@@ -1,8 +1,10 @@
-import Express from "express";
+import express from "express";
 import globalErrorHandler from "./middlewares/globalErrorHandler";
 import userRouter from "./user/userRouter";
 
-const app = Express();
+const app = express();
+
+app.use(express.json());
 
 //Routes
 //http requests: get, post, put, patch, delete.
