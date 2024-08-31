@@ -19,7 +19,13 @@ const createUser = async (req: Request, res: Response, next: NextFunction) => {
 
   const hashedPassword = await bcrypt.hash(password, 10);
 
-  res.json({ message: "new user is created" });
+  const newUser = await userModel.create({
+    name,
+    email,
+    password: hashedPassword,
+  });
+
+  res.json({ id: newUser._id });
 };
 
 export { createUser };
